@@ -13,6 +13,7 @@ import Preferences from "./components/Preferences";
 import Home from "./components/Home";
 import AuthModal from "./components/AuthModal";
 import Calendar from "./components/Calendar";
+import AuthCallback from "./components/AuthCallback";
 import { getProfile } from "./services/auth";
 
 function RequireAuth({
@@ -83,14 +84,7 @@ function App() {
             <Link to="/goals" className="get-started-button">
               Get Started
             </Link>
-            {!user ? (
-              <button
-                className="auth-header-btn"
-                onClick={() => setAuthOpen(true)}
-              >
-                Login / Register
-              </button>
-            ) : (
+            {user && (
               <button className="auth-header-btn" onClick={handleLogout}>
                 Logout
               </button>
@@ -124,6 +118,10 @@ function App() {
                   <Calendar />
                 </RequireAuth>
               }
+            />
+            <Route
+              path="/auth/callback"
+              element={<AuthCallback onAuthSuccess={handleAuthSuccess} />}
             />
           </Routes>
         </main>

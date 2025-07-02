@@ -1,10 +1,14 @@
 :root {
-  --dark-gray: #1A1A1A;
+  --primary-gradient: linear-gradient(90deg, #1de9b6 0%, #2979ff 100%);
+  --primary-color: #1de9b6;
+  --secondary-color: #2979ff;
+  --accent-bg: rgba(41, 121, 255, 0.07);
+  --light-bg: #f4fcff;
+  --dark-gray: #23272f;
   --medium-gray: #2D2D2D;
   --light-gray: #3D3D3D;
   --white: #FFFFFF;
-  --accent-gray: #4A4A4A;
-  --heading-font: 'Playfair Display', serif;
+  --heading-font: 'Montserrat', 'Inter', 'Playfair Display', serif;
   --body-font: 'Inter', sans-serif;
 }
 
@@ -15,8 +19,11 @@
 }
 
 body {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #e0f7fa 0%, #f4fcff 100%);
   font-family: var(--body-font);
-  line-height: 1.6;
+  line-height: 1.7;
+  color: var(--medium-gray);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -24,10 +31,10 @@ body {
 /* Custom styles can be added here */
 
 .app {
-  text-align: center;
   min-height: 100vh;
-  background-color: var(--dark-gray);
-  color: var(--white);
+  background: linear-gradient(120deg, #e0f7fa 0%, #f4fcff 100%);
+  color: var(--medium-gray);
+  text-align: center;
 }
 
 .app-header {
@@ -387,5 +394,81 @@ body {
   
   .get-started-button {
     padding: 0.5rem 1rem;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: #181c25;
+  margin-bottom: 0.5em;
+}
+
+p, label, input, select, button, span, div {
+  font-family: var(--body-font);
+  font-size: 1.08rem;
+  letter-spacing: 0.01em;
+}
+
+/* Card and section backgrounds */
+.goals-section, .preferences-section, .redesigned-prefs, .redesigned-calendar, .home-hero-glass, .home-feature-card, .home-cta-glass {
+  background: var(--accent-bg) !important;
+  box-shadow: 0 4px 24px rgba(41,121,255,0.08);
+  border-radius: 18px;
+}
+
+/* Remove any old solid backgrounds */
+/* .goals-section, .preferences-section, .app { background: none !important; } */
+
+/* Improve input and button styles */
+input, select, textarea {
+  background: var(--white);
+  color: var(--medium-gray);
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+}
+
+button, .get-started-button, .cta-button, .motion-hero-cta {
+  font-family: var(--body-font);
+  font-weight: 700;
+  border-radius: 999px;
+  border: none;
+  background: var(--primary-gradient);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(41,121,255,0.08);
+}
+button:hover, .get-started-button:hover, .cta-button:hover, .motion-hero-cta:hover {
+  background: linear-gradient(90deg, #2979ff 0%, #1de9b6 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(41,121,255,0.14);
+}
+
+.motion-gradient-highlight {
+  background: var(--primary-gradient) !important;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .home-hero-glass, .home-features-row, .goals-section, .preferences-section, .redesigned-prefs, .redesigned-calendar {
+    padding: 1.2rem 0.5rem;
+    border-radius: 12px;
+  }
+  h1 {
+    font-size: 2.1rem;
   }
 }

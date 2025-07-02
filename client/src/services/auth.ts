@@ -19,8 +19,10 @@ export const login = async (email: string, password: string) => {
 };
 
 export const getProfile = async (token: string) => {
-  const res = await fetch('/api/users/profile', {
-    headers: { 'Authorization': `Bearer ${token}` }
+  const res = await fetch('/api/user/profile', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
   if (!res.ok) throw new Error('Failed to fetch profile');
   return res.json();

@@ -15,10 +15,11 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
   credentials: true
 }));
 app.use(express.json());
+
 
 // Routes
 app.use('/api/users', userRoutes);
@@ -26,6 +27,10 @@ app.use('/api/goals', goalRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/calendar', calendarRoutes);
 app.use('/api/ai', aiRoutes);
+
+app.get('/', (req, res) => {
+  res.send('API server is running. Frontend is available at ' + (process.env.FRONTEND_URL || 'http://localhost:3000'));
+});
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/goalPlanner')

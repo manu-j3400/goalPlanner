@@ -88,7 +88,11 @@ const AuthModal: React.FC<AuthModalProps> = ({
             required
           />
           {error && <div className="auth-error">{error}</div>}
-          <button type="submit" disabled={loading} className="auth-submit">
+          <button
+            type="submit"
+            disabled={loading}
+            className="get-started-button"
+          >
             {loading
               ? "Please wait..."
               : tab === "login"
